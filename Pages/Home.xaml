@@ -1,0 +1,60 @@
+﻿<Page x:Class="WPFModernVerticalMenu.Pages.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFModernVerticalMenu.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Home"
+      FontFamily="Poppins"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image x:Name="imgClient"  Width="250" Height="250" RenderOptions.BitmapScalingMode="HighQuality"/>
+                <TextBlock Text="Login" x:Name="txtClientLogin" FontSize="40" Margin="0,20,0,0" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Organ Num" x:Name="txtCdlientLogin" FontSize="40" Margin="0,0,0,40" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"/>
+                <TextBox Width="200"
+                MaxLength="35"
+                x:Name="txtClientName"
+                MaxWidth="200"
+                Margin="0,20,0,0"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Background="{DynamicResource PrimaryTextColor}"
+                material:HintAssist.Hint="Name"/>
+
+                <TextBox Width="200"
+                MaxWidth="200"
+                x:Name="txtClientLink"
+                MaxLength="45"
+                Margin="0,20,0,0"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Background="{DynamicResource PrimaryTextColor}"
+                material:HintAssist.Hint="Email or Phone"/>
+                <Button
+                 Margin="0,20,0,0"
+                 x:Name="BtnEditContent"
+                 Width="200"
+                 Height="40"
+                 Background="#772250"
+                 Style="{StaticResource MaterialDesignRaisedLightButton}"
+                 material:ButtonAssist.CornerRadius="5"
+                 ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    <TextBlock
+                        Foreground="{DynamicResource PrimaryTextColor}"
+                        Text="Edit" FontFamily="Poppins"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Page>

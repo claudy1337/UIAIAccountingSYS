@@ -1,4 +1,4 @@
-﻿<Page x:Class="WPFModernVerticalMenu.Pages.DivisionInformation"
+﻿<Page x:Class="WPFModernVerticalMenu.Pages.RoomInformation"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WPFModernVerticalMenu.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DivisionInformation"
+      Title="RoomInformation"
       FontFamily="Poppins"
       xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes">
 
@@ -35,8 +35,8 @@
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality"/>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">
-                                <TextBlock Text="login" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
-                                <TextBlock Text="doljn" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+                                <TextBlock Text="room" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+                                <TextBlock Text="num" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                             </StackPanel>
                         </StackPanel>
                     </ListView>
@@ -61,8 +61,8 @@
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality"/>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">
-                                <TextBlock Text="login" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
-                                <TextBlock Text="doljn" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+                                <TextBlock Text="prod" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+                                <TextBlock Text="numb" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                             </StackPanel>
                         </StackPanel>
                     </ListView>
@@ -70,7 +70,7 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Organ Num" x:Name="txtCdlientLogin" FontSize="40"  HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"/>
+                <TextBlock Text="Room Num" x:Name="txtCdlientLogin" FontSize="40"  HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"/>
                 <TextBox Width="200"
                 MaxLength="35"
                 MaxWidth="200"
@@ -78,7 +78,7 @@
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Name"/>
-                
+
                 <TextBox Width="200"
                 MaxLength="35"
                 MaxWidth="200"

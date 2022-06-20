@@ -72,6 +72,15 @@
     <Compile Include="Pages\ProductInformation.xaml.cs">
       <DependentUpon>ProductInformation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ProductTransfer.xaml.cs">
+      <DependentUpon>ProductTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RequestTransfer.xaml.cs">
+      <DependentUpon>RequestTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RoomInformation.xaml.cs">
+      <DependentUpon>RoomInformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ResetPassword.xaml.cs">
       <DependentUpon>ResetPassword.xaml</DependentUpon>
     </Compile>
@@ -121,6 +130,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ProductInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProductTransfer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RequestTransfer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RoomInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

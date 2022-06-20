@@ -69,11 +69,14 @@
     <Compile Include="Pages\DivisionInformation.xaml.cs">
       <DependentUpon>DivisionInformation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HistoryPage.xaml.cs">
+      <DependentUpon>HistoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProductInformation.xaml.cs">
       <DependentUpon>ProductInformation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ProductTransfer.xaml.cs">
-      <DependentUpon>ProductTransfer.xaml</DependentUpon>
+    <Compile Include="Pages\RequestAdd.xaml.cs">
+      <DependentUpon>RequestAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RequestTransfer.xaml.cs">
       <DependentUpon>RequestTransfer.xaml</DependentUpon>
@@ -125,6 +128,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\HistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ProductTransfer.xaml">
+    <Page Include="Pages\RequestAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,7 +196,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\logo.png" />
+    <Resource Include="Resources\client\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\departament\" />
+    <Folder Include="Resources\product\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\client\admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\client\respons.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />

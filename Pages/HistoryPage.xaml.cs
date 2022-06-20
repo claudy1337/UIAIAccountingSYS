@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WPFModernVerticalMenu.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ProductTransfer.xaml
+    /// Логика взаимодействия для HistoryPage.xaml
     /// </summary>
-    public partial class ProductTransfer : Page
+    public partial class HistoryPage : Page
     {
-        public ProductTransfer()
+        public HistoryPage()
         {
             InitializeComponent();
         }

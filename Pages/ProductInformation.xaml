@@ -20,8 +20,8 @@
             <StackPanel Grid.Column="1">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="230"/>
-                        <RowDefinition Height="220"/>
+                        <RowDefinition Height="300"/>
+                        <RowDefinition Height="150"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <TextBox Width="200"
@@ -45,6 +45,13 @@
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Value"/>
+                        <DatePicker Width="200"
+                MaxWidth="200"
+                Margin="0,20,0,0"
+                Style="{DynamicResource MaterialDesignOutlinedDatePicker}"
+                Background="{DynamicResource PrimaryTextColor}"
+                material:HintAssist.Hint="Value"/>
+                        
                     </StackPanel>
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Grid>
@@ -53,8 +60,8 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0">
-                                <TextBlock Text="fdfds" Foreground="{DynamicResource PrimaryTextColor}" FontSize="30"/>
-                                <TextBlock Text="fdfds" Foreground="{DynamicResource PrimaryTextColor}" FontSize="30"/>
+                                <TextBlock Text="roomNum" Foreground="{DynamicResource PrimaryTextColor}" FontSize="30"/>
+                                <TextBlock Text="depName" Foreground="{DynamicResource PrimaryTextColor}" FontSize="30"/>
 
                             </StackPanel>
                             <Image Source="/Resources/logo.png" Grid.Column="0" Width="150"/>

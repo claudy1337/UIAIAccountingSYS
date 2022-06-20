@@ -63,6 +63,7 @@
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">
                                 <TextBlock Text="prod" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                                 <TextBlock Text="numb" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+                                <TextBlock Text="count" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                             </StackPanel>
                         </StackPanel>
                     </ListView>

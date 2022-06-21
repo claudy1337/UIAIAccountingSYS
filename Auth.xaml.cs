@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFModernVerticalMenu.Classes;
 
 namespace WPFModernVerticalMenu
 {
@@ -32,7 +33,27 @@ namespace WPFModernVerticalMenu
 
         private void BtnAuthAccount_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if (string.IsNullOrWhiteSpace(TxtClienLogin.Text) && string.IsNullOrWhiteSpace(TxtClientPassword.Password))
+                {
+                    MessageBox.Show("incorrect");
+                }
+                Classes.Model.Client client = Classes.Model.BD_Connection.bd.Client.FirstOrDefault(c => c.Login == TxtClienLogin.Text && c.Password == TxtClientPassword.Password);
+                if (client != null)
+                {
+                    Classes.Client clients = new Classes.Client(client.Name, client.Login, client.Link, client.Role.idRole, client.Image, client.Departament.IdDepartament);
+                    MessageBox.Show("welcome: " + client.Name);
+                    MainWindow main = new MainWindow(clients);
+                    main.Show();
+                    this.Close();
+                }
+                else MessageBox.Show("incorrect");
+            }
+            catch(Exception)
+            {
+                return;
+            }
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

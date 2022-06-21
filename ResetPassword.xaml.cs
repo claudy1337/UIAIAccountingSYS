@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFModernVerticalMenu.Classes.Model;
+using WPFModernVerticalMenu.Classes;
 
 namespace WPFModernVerticalMenu
 {
@@ -39,7 +41,35 @@ namespace WPFModernVerticalMenu
 
         private void BtnResetPass_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                if (string.IsNullOrWhiteSpace(TxtClienLink.Text) && string.IsNullOrWhiteSpace(TxtClientPassword.Password))
+                {
+                    MessageBox.Show("incorrect");
+                    Refresh();
+                }
+                else
+                {
+                   Classes.Model.Client client = Classes.Model.BD_Connection.bd.Client.FirstOrDefault(c => c.Link == TxtClienLink.Text && c.Login == txtClientLogin.Text);
+                    if (client != null)
+                    {
+                        client.Password = TxtClientPassword.Password;
+                        BD_Connection.bd.SaveChanges();
+                        MessageBox.Show("edit password");
+                        Refresh();
+                    }
+                }
+            }
+            catch(Exception)
+            {
+                Refresh();
+            }
+        }
+        public void Refresh()
+        {
+            txtClientLogin.Text = null;
+            TxtClienLink.Text = null;
+            TxtClientPassword.Password = null;
         }
     }
 }

@@ -20,8 +20,10 @@ namespace WPFModernVerticalMenu.Pages
     /// </summary>
     public partial class Home : Page
     {
-        public Home()
+        public static Classes.Client Client;
+        public Home(Classes.Client client)
         {
+            Client = client;
             InitializeComponent();
         }
     }

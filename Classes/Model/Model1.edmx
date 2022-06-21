@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище AccountingEquipmentModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище AccountingEquipmentModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="idClient" />
@@ -16,6 +16,7 @@
           <Property Name="RoleId" Type="int" />
           <Property Name="Image" Type="nvarchar(max)" />
           <Property Name="IdDepartament" Type="int" />
+          <Property Name="Name" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Departament">
           <Key>
@@ -24,6 +25,7 @@
           <Property Name="IdDepartament" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -34,6 +36,7 @@
           <Property Name="Count" Type="int" />
           <Property Name="Image" Type="nvarchar(max)" />
           <Property Name="Date" Type="date" />
+          <Property Name="idRoom" Type="int" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -59,7 +62,6 @@
           <Property Name="idRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="IdDepartament" Type="int" />
-          <Property Name="idProduct" Type="int" />
           <Property Name="Image" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -93,6 +95,18 @@
             </Principal>
             <Dependent Role="Client">
               <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="idRoom" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="idRoom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -132,18 +146,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Room_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Room" Type="Self.Room" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="idProduct" />
-            </Principal>
-            <Dependent Role="Room">
-              <PropertyRef Name="idProduct" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище AccountingEquipmentModelContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departament" EntityType="Self.Departament" Schema="dbo" store:Type="Tables" />
@@ -160,6 +162,10 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
+          <AssociationSet Name="FK_Product_Room" Association="Self.FK_Product_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
           <AssociationSet Name="FK_Request_Client" Association="Self.FK_Request_Client">
             <End Role="Client" EntitySet="Client" />
             <End Role="Request" EntitySet="Request" />
@@ -172,13 +178,8 @@
             <End Role="Departament" EntitySet="Departament" />
             <End Role="Room" EntitySet="Room" />
           </AssociationSet>
-          <AssociationSet Name="FK_Room_Product" Association="Self.FK_Room_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Room" EntitySet="Room" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AccountingEquipmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -193,6 +194,7 @@
           <Property Name="RoleId" Type="Int32" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdDepartament" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Departament" Relationship="Self.FK_Client_Departament" FromRole="Client" ToRole="Departament" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Client_Role" FromRole="Client" ToRole="Role" />
           <NavigationProperty Name="Request" Relationship="Self.FK_Request_Client" FromRole="Client" ToRole="Request" />
@@ -206,6 +208,7 @@
           <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_Departament" FromRole="Departament" ToRole="Client" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Room_Departament" FromRole="Departament" ToRole="Room" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -216,7 +219,8 @@
           <Property Name="Count" Type="Int32" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Room" Relationship="Self.FK_Room_Product" FromRole="Product" ToRole="Room" />
+          <Property Name="idRoom" Type="Int32" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Product_Room" FromRole="Product" ToRole="Room" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -245,10 +249,9 @@
           <Property Name="idRoom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdDepartament" Type="Int32" />
-          <Property Name="idProduct" Type="Int32" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Departament" Relationship="Self.FK_Room_Departament" FromRole="Room" ToRole="Departament" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Room_Product" FromRole="Room" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Room" FromRole="Room" ToRole="Product" />
           <NavigationProperty Name="Request" Relationship="Self.FK_Request_Room" FromRole="Room" ToRole="Request" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -309,15 +312,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Room_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+        <Association Name="FK_Product_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="idProduct" />
+            <Principal Role="Room">
+              <PropertyRef Name="idRoom" />
             </Principal>
-            <Dependent Role="Room">
-              <PropertyRef Name="idProduct" />
+            <Dependent Role="Product">
+              <PropertyRef Name="idRoom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -357,9 +360,9 @@
             <End Role="Departament" EntitySet="Departament" />
             <End Role="Room" EntitySet="Room" />
           </AssociationSet>
-          <AssociationSet Name="FK_Room_Product" Association="Self.FK_Room_Product">
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_Product_Room" Association="Self.FK_Product_Room">
             <End Role="Room" EntitySet="Room" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_Request_Room" Association="Self.FK_Request_Room">
             <End Role="Room" EntitySet="Room" />
@@ -382,12 +385,14 @@
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="IdDepartament" ColumnName="IdDepartament" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Departament">
             <EntityTypeMapping TypeName="AccountingEquipmentModel.Departament">
               <MappingFragment StoreEntitySet="Departament">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="IdDepartament" ColumnName="IdDepartament" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
@@ -402,6 +407,7 @@
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="idRoom" ColumnName="idRoom" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -430,7 +436,6 @@
                 <ScalarProperty Name="idRoom" ColumnName="idRoom" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IdDepartament" ColumnName="IdDepartament" />
-                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -7,30 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPFModernVerticalMenu.Model
+namespace WPFModernVerticalMenu.Classes.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Client
+    public partial class Departament
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client()
+        public Departament()
         {
-            this.Request = new HashSet<Request>();
+            this.Client = new HashSet<Client>();
+            this.Room = new HashSet<Room>();
         }
     
-        public int idClient { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Link { get; set; }
-        public Nullable<int> RoleId { get; set; }
+        public int IdDepartament { get; set; }
+        public string Name { get; set; }
+        public string FullName { get; set; }
         public string Image { get; set; }
-        public Nullable<int> IdDepartament { get; set; }
     
-        public virtual Departament Departament { get; set; }
-        public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Request> Request { get; set; }
+        public virtual ICollection<Client> Client { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Room> Room { get; set; }
     }
 }

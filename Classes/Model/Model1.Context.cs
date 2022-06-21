@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPFModernVerticalMenu.Model
+namespace WPFModernVerticalMenu.Classes.Model
 {
     using System;
     using System.Data.Entity;

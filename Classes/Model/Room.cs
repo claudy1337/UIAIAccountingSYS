@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPFModernVerticalMenu.Model
+namespace WPFModernVerticalMenu.Classes.Model
 {
     using System;
     using System.Collections.Generic;
@@ -17,17 +17,18 @@ namespace WPFModernVerticalMenu.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Room()
         {
+            this.Product = new HashSet<Product>();
             this.Request = new HashSet<Request>();
         }
     
         public int idRoom { get; set; }
         public string Name { get; set; }
         public Nullable<int> IdDepartament { get; set; }
-        public Nullable<int> idProduct { get; set; }
         public string Image { get; set; }
     
         public virtual Departament Departament { get; set; }
-        public virtual Product Product { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Request> Request { get; set; }
     }

@@ -7,20 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPFModernVerticalMenu.Model
+namespace WPFModernVerticalMenu.Classes.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Request
+    public partial class sysdiagrams
     {
-        public int idOperation { get; set; }
-        public Nullable<int> idProduct { get; set; }
-        public string Date { get; set; }
-        public Nullable<int> idClient { get; set; }
-        public Nullable<bool> Status { get; set; }
-    
-        public virtual Client Client { get; set; }
-        public virtual Room Room { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

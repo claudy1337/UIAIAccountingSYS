@@ -7,23 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPFModernVerticalMenu.Model
+namespace WPFModernVerticalMenu.Classes.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Request
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
-        {
-            this.Client = new HashSet<Client>();
-        }
+        public int idOperation { get; set; }
+        public Nullable<int> idProduct { get; set; }
+        public string Date { get; set; }
+        public Nullable<int> idClient { get; set; }
+        public Nullable<bool> Status { get; set; }
     
-        public int idRole { get; set; }
-        public string Type { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Client { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual Room Room { get; set; }
     }
 }

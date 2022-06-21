@@ -33,8 +33,8 @@
                 material:HintAssist.Hint="Name"/>
                     <ListView x:Name="ListDepartament" Grid.Row="1" Grid.Column="0" Width="250" Height="370" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">
+                            <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="100" Height="100"/>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Width="100">
                                 <TextBlock Text="room" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                                 <TextBlock Text="num" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                             </StackPanel>
@@ -59,8 +59,8 @@
                 material:HintAssist.Hint="Name"/>
                     <ListView x:Name="ListEmployee" Grid.Row="1" Grid.Column="0" Width="250" Height="370" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">
+                            <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="100" Height="100"/>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Width="100">
                                 <TextBlock Text="prod" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                                 <TextBlock Text="numb" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                                 <TextBlock Text="count" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>

@@ -19,10 +19,9 @@
             
             <StackPanel Grid.Column="1" Width="250" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Request" FontSize="40" Margin="0,0,0,10" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"/>
-                <TextBox Width="200"
-                MaxLength="35"
+                <ComboBox Width="200"
                 MaxWidth="200"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Style="{StaticResource MaterialDesignOutlinedComboBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Name"/>
                 

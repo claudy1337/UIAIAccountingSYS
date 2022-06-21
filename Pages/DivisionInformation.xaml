@@ -33,10 +33,10 @@
                 material:HintAssist.Hint="Name"/>
                     <ListView x:Name="ListDepartament" Grid.Row="1" Grid.Column="0" Width="250" Height="370" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">
-                                <TextBlock Text="login" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
-                                <TextBlock Text="doljn" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+                            <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="100" Height="100"/>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Width="100">
+                                <TextBlock Text="organNum" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+                                <TextBlock Text="name" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                             </StackPanel>
                         </StackPanel>
                     </ListView>
@@ -59,8 +59,8 @@
                 material:HintAssist.Hint="Name"/>
                     <ListView x:Name="ListEmployee" Grid.Row="1" Grid.Column="0" Width="250" Height="370" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">
+                            <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="100" Height="100"/>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Width="100">
                                 <TextBlock Text="login" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                                 <TextBlock Text="doljn" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
                             </StackPanel>

@@ -64,7 +64,7 @@
                                 <TextBlock Text="depName" Foreground="{DynamicResource PrimaryTextColor}" FontSize="30"/>
 
                             </StackPanel>
-                            <Image Source="/Resources/logo.png" Grid.Column="0" Width="150"/>
+                            <Image Source="/Resources/logo.png" Grid.Column="0" Width="150" Height="150"/>
                         </Grid>
                         
                     </StackPanel>

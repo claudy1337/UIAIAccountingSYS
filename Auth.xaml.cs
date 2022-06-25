@@ -42,9 +42,11 @@ namespace WPFModernVerticalMenu
                 Classes.Model.Client client = Classes.Model.BD_Connection.bd.Client.FirstOrDefault(c => c.Login == TxtClienLogin.Text && c.Password == TxtClientPassword.Password);
                 if (client != null)
                 {
-                    Classes.Client clients = new Classes.Client(client.Name, client.Login, client.Link, client.Role.idRole, client.Image, client.Departament.IdDepartament);
+                    Classes.Model.Departament departament = Classes.Model.BD_Connection.bd.Departament.FirstOrDefault(d => d.IdDepartament == client.IdDepartament);
+                    Classes.Departament departaments = new Departament(departament.Name, departament.FullName, departament.Image);
+                    Classes.Client clients = new Classes.Client(client.Name, client.Login, client.Link, client.Role.idRole, client.Image, departaments);
                     MessageBox.Show("welcome: " + client.Name);
-                    MainWindow main = new MainWindow(clients);
+                    MainWindow main = new MainWindow(clients, departaments);
                     main.Show();
                     this.Close();
                 }

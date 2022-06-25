@@ -57,6 +57,7 @@ namespace WPFModernVerticalMenu
                         BD_Connection.bd.SaveChanges();
                         MessageBox.Show("edit password");
                         Refresh();
+                        Auth auth = new Auth();
                     }
                 }
             }

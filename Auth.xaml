@@ -57,7 +57,7 @@
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image  Width="300" Height="300" Source="/Resources/logo.png"/>
 
-                <TextBlock Text="Name" FontSize="40" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"
+                <TextBlock Text="EQURoom" FontSize="40" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </StackPanel>
         </Grid>

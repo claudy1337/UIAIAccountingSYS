@@ -41,8 +41,8 @@
                                 <ImageBrush ImageSource="Resources/logo.png" Stretch="Uniform"/>
                             </Border.Background>
                         </Border>
-                        
-                        <Label Content="Poppins"
+
+                        <Label Content="EQURoom"
                                Foreground="{DynamicResource PrimaryTextColor}"
                                FontWeight="Bold"
                                FontSize="16"
@@ -71,7 +71,7 @@
                         <Button x:Name="btnRequestTransfer" Style="{DynamicResource PopupButtonStyle}" MouseEnter="btnRequestTransfer_MouseEnter" MouseLeave="btnRequestTransfer_MouseLeave" Click="btnRequestTransfer_Click" >
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource RequestCheck}" IconWidth="18" Text="Transfer" VerticalAlignment="Center"/>
                         </Button>
-                        <Button x:Name="btnExit" Margin="0,230,0,0" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" Click="btnExit_Click">
+                        <Button x:Name="btnExit" Margin="0,190,0,0" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave" Click="btnExit_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource exit}" IconWidth="18" Text="Exit" VerticalAlignment="Center"/>
                         </Button>
                     </StackPanel>

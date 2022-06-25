@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFModernVerticalMenu.Classes;
+using WPFModernVerticalMenu.Classes.Model;
 
 namespace WPFModernVerticalMenu.Pages
 {
@@ -25,6 +27,46 @@ namespace WPFModernVerticalMenu.Pages
         {
             Client = client;
             InitializeComponent();
+            txtClientLink.Text = Client.Link;
+            txtClientLogin.Text = Client.Login;
+            txtClientName.Text = Client.Name;
+            txtDepName.Text = Client.Departament.Name;
+            imgClient.Source = new BitmapImage(new Uri(Client.Image, UriKind.RelativeOrAbsolute));
+        }
+
+        private void txtDepName_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.DivisionInformation(Client,Client.Departament));
+        }
+
+        private void BtnEditContents_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var selectClient = Classes.Model.BD_Connection.bd.Client.Where(c => c.Login == Client.Login).FirstOrDefault();
+                if (selectClient != null)
+                {
+                   
+                    Classes.Model.Client searchClient = Classes.Model.BD_Connection.bd.Client.FirstOrDefault(c => c.Link == txtClientLink.Text && c.Login != Client.Login);
+                    if (searchClient == null)
+                    {
+                        selectClient.Link = txtClientLink.Text;
+                        selectClient.Name = txtClientName.Text;
+                        BD_Connection.bd.SaveChanges();
+                        Client.Name = txtClientName.Text;
+                        Client.Link = txtClientLink.Text;
+                        MessageBox.Show("edit");
+                    }
+                    
+                }
+                else if (string.IsNullOrWhiteSpace(txtClientLink.Text) || string.IsNullOrWhiteSpace(txtClientName.Text)) return;
+                else return;
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("{dsd");
+            }
         }
     }
 }

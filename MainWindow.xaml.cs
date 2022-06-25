@@ -24,9 +24,11 @@ namespace WPFModernVerticalMenu
     public partial class MainWindow : Window
     {
         public static Classes.Client Client;
-        public MainWindow(Client client)
+        public static Classes.Departament Departament;
+        public MainWindow(Client client, Classes.Departament departament)
         {
             Client = client;
+            Departament = departament;
             InitializeComponent();
         }
 
@@ -96,7 +98,7 @@ namespace WPFModernVerticalMenu
 
         private void btnDivis_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new DivisionInformation());
+            fContainer.Navigate(new DivisionInformation(Client, Departament));
         }
 
         private void btnRequestAdd_MouseEnter(object sender, MouseEventArgs e)

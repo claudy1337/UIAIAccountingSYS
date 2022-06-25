@@ -20,8 +20,12 @@ namespace WPFModernVerticalMenu.Pages
     /// </summary>
     public partial class DivisionInformation : Page
     {
-        public DivisionInformation()
+        public static Classes.Departament Departament;
+        public static Classes.Client Client;
+        public DivisionInformation(Classes.Client client, Classes.Departament departament)
         {
+            Departament = departament;
+            Client = client;
             InitializeComponent();
         }
     }

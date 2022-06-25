@@ -30,6 +30,16 @@ namespace WPFModernVerticalMenu
             Client = client;
             Departament = departament;
             InitializeComponent();
+            if (Client.Role == 1 )
+            {
+                btnRoom.Visibility = Visibility.Hidden;
+                btnHistory.Visibility = Visibility.Hidden;
+                btnRequestTransfer.Visibility = Visibility.Hidden;
+            }
+            else if (Client.Role == 2)
+            {
+                btnRequestTransfer.Visibility = Visibility.Hidden;
+            }
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

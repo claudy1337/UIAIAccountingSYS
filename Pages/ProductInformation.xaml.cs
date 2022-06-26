@@ -20,9 +20,24 @@ namespace WPFModernVerticalMenu.Pages
     /// </summary>
     public partial class ProductInformation : Page
     {
-        public ProductInformation()
+        public static Classes.Product Product;
+        public ProductInformation(Classes.Product product)
         {
+            Product = product;
             InitializeComponent();
+            txtProductName.Text = Product.Name;
+            var searchRoom = Classes.Model.BD_Connection.bd.Room.Where(r=>r.idRoom == Product.IdRoom).FirstOrDefault();
+            imgRoom.Source = new BitmapImage(new Uri(searchRoom.Image, UriKind.RelativeOrAbsolute));
+            
+            txtDepName.Text = searchRoom.Departament.Name;
+            txtRoomName.Text = searchRoom.Name;
+            txtDateBuy.Text = Product.Date.ToString();
+            txtCount.Text = Product.Count.ToString();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

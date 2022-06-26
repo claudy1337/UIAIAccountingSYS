@@ -18,7 +18,6 @@ namespace WPFModernVerticalMenu.Classes.Model
         public Room()
         {
             this.Product = new HashSet<Product>();
-            this.Request = new HashSet<Request>();
         }
     
         public int idRoom { get; set; }
@@ -29,7 +28,5 @@ namespace WPFModernVerticalMenu.Classes.Model
         public virtual Departament Departament { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Request> Request { get; set; }
     }
 }

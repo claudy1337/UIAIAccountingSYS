@@ -15,26 +15,26 @@
             <TextBlock Text="Request Add" FontSize="30" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <ComboBox Width="200"
+                x:Name="CBProduct"
                 Margin="0,20,0,0"
+                SelectionChanged="CBProduct_SelectionChanged"
+                DisplayMemberPath="Name"
                 Style="{StaticResource MaterialDesignOutlinedComboBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Value"/>
+                material:HintAssist.Hint="Product"/>
             <TextBox Width="200"
-                MaxLength="100"
+                x:Name="txtCount"
+                MaxLength="5"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Value"/>
+                material:HintAssist.Hint="Count" PreviewTextInput="count"/>
             
-            <TextBox Width="200"
-                MaxLength="100"
-                MaxWidth="200"
-                Margin="0,20,0,0"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Value"/>
+            
             <Button
+                 x:Name="btnSendRequest"
+                 Click="btnSendRequest_Click"
                  Margin="0,20,0,0"
                  Height="40"
                  Width="200"

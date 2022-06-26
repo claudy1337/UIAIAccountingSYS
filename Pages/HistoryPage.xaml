@@ -27,14 +27,15 @@
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Search"/>
             </StackPanel>
-            <DataGrid Grid.Row="1" Style="{DynamicResource MaterialDesignDataGrid}" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
+            <DataGrid Grid.Row="1" x:Name="DGHistory" Style="{DynamicResource MaterialDesignDataGrid}" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
                 <DataGrid.Columns >
-                    <DataGridTextColumn Header="Value"/>
-                    <DataGridTextColumn Header="Value"/>
-                    <DataGridTextColumn Header="Value"/>
-                    <DataGridTextColumn Header="Value"/>
-                    <DataGridTextColumn Header="Value"/>
-                    <DataGridTextColumn Header="Value"/>
+                    <DataGridTextColumn Header="Client Login" Binding="{Binding Client.Login}"/>
+                    <DataGridTextColumn Header="Client Name" Binding="{Binding Client.Name}"/>
+                    <DataGridTextColumn Header="Client Departament" Binding="{Binding Client.Departament.Name}"/>
+                    <DataGridTextColumn Header="Product Name" Binding="{Binding Product.Name}"/>
+                    <DataGridTextColumn Header="Product Count" Binding="{Binding Product.Count}"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button

@@ -130,7 +130,7 @@ namespace WPFModernVerticalMenu
 
         private void btnRequestAdd_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new RequestAdd());
+            fContainer.Navigate(new RequestAdd(Client));
         }
 
         private void btnHistory_MouseEnter(object sender, MouseEventArgs e)
@@ -175,7 +175,7 @@ namespace WPFModernVerticalMenu
 
         private void btnRequestTransfer_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new RequestTransfer());
+            fContainer.Navigate(new RequestTransfer(Client));
         }
 
         private void btnExit_MouseEnter(object sender, MouseEventArgs e)
@@ -234,7 +234,7 @@ namespace WPFModernVerticalMenu
 
         private void btnRoom_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new RoomInformation());
+            fContainer.Navigate(new RoomInformation(Client));
         }
     }
 }

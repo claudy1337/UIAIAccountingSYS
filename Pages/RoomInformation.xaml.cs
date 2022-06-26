@@ -20,9 +20,31 @@ namespace WPFModernVerticalMenu.Pages
     /// </summary>
     public partial class RoomInformation : Page
     {
-        public RoomInformation()
+        public static Classes.Client Client;
+        public RoomInformation(Classes.Client client)
         {
+            Client = client;
             InitializeComponent();
+            ListRoom.ItemsSource = Classes.Model.BD_Connection.bd.Room.ToList();
+            ListProduct.ItemsSource = Classes.Model.BD_Connection.bd.Product.ToList();
+            
+            
+        }
+
+        private void ListRoom_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectRoom = ListRoom.SelectedItem as Classes.Model.Room;
+            txtRoomName.Text = selectRoom.Name;
+            txtDepRoom.Text = selectRoom.Departament.Name;
+            txtCountProd.Text = Classes.Model.BD_Connection.bd.Product.Where(p=>p.idRoom == selectRoom.idRoom).Count().ToString();
+            ListProduct.ItemsSource = Classes.Model.BD_Connection.bd.Product.Where(p => p.idRoom == selectRoom.idRoom).ToList();
+        }
+
+        private void ListProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectProd = ListProduct.SelectedItem as Classes.Model.Product;
+            Classes.Product product = new Classes.Product(selectProd.Name, Convert.ToInt32(selectProd.Count), selectProd.Image, Convert.ToDateTime(selectProd.Date), Convert.ToInt32(selectProd.idRoom));
+            NavigationService.Navigate(new Pages.ProductInformation(product));
         }
     }
 }

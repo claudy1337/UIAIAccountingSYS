@@ -20,9 +20,18 @@ namespace WPFModernVerticalMenu.Pages
     /// </summary>
     public partial class RequestTransfer : Page
     {
-        public RequestTransfer()
+        public static Classes.Client Client;
+        public RequestTransfer(Classes.Client client)
         {
+            Client = client;
             InitializeComponent();
+            ListReqest.ItemsSource = Classes.Model.BD_Connection.bd.Request.ToList();
+        }
+
+        private void ListReqest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectReqest = ListReqest.SelectedItem as Classes.Model.Request;
+            
         }
     }
 }

@@ -14,6 +14,13 @@ namespace WPFModernVerticalMenu.Classes.Model
     
     public partial class Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Product()
+        {
+            this.Request = new HashSet<Request>();
+            this.History = new HashSet<History>();
+        }
+    
         public int idProduct { get; set; }
         public string Name { get; set; }
         public Nullable<int> Count { get; set; }
@@ -22,5 +29,9 @@ namespace WPFModernVerticalMenu.Classes.Model
         public Nullable<int> idRoom { get; set; }
     
         public virtual Room Room { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Request> Request { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<History> History { get; set; }
     }
 }

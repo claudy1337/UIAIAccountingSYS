@@ -12,14 +12,13 @@ namespace WPFModernVerticalMenu.Classes.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Request
+    public partial class History
     {
-        public int idOperation { get; set; }
+        public int idHistory { get; set; }
+        public Nullable<int> idClient { get; set; }
         public Nullable<int> idProduct { get; set; }
         public string Date { get; set; }
-        public Nullable<int> idClient { get; set; }
-        public Nullable<bool> Status { get; set; }
-        public Nullable<int> Count { get; set; }
+        public string Type { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Product Product { get; set; }

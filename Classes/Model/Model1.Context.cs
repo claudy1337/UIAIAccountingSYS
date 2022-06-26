@@ -32,5 +32,6 @@ namespace WPFModernVerticalMenu.Classes.Model
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Room> Room { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<History> History { get; set; }
     }
 }

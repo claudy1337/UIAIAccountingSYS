@@ -52,6 +52,7 @@ namespace WPFModernVerticalMenu.Pages
                     {
                         selectClient.Link = txtClientLink.Text;
                         selectClient.Name = txtClientName.Text;
+
                         BD_Connection.bd.SaveChanges();
                         Client.Name = txtClientName.Text;
                         Client.Link = txtClientLink.Text;

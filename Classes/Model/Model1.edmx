@@ -27,6 +27,16 @@
           <Property Name="FullName" Type="nvarchar(max)" />
           <Property Name="Image" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="idHistory" />
+          </Key>
+          <Property Name="idHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idClient" Type="int" />
+          <Property Name="idProduct" Type="int" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="idProduct" />
@@ -47,6 +57,7 @@
           <Property Name="Date" Type="nvarchar" MaxLength="50" />
           <Property Name="idClient" Type="int" />
           <Property Name="Status" Type="bit" />
+          <Property Name="Count" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -98,6 +109,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_History_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="idProduct" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Product_Room">
           <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -122,12 +157,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Request_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+        <Association Name="FK_Request_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Request" Type="Self.Request" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="idRoom" />
+            <Principal Role="Product">
+              <PropertyRef Name="idProduct" />
             </Principal>
             <Dependent Role="Request">
               <PropertyRef Name="idProduct" />
@@ -149,6 +184,7 @@
         <EntityContainer Name="Хранилище AccountingEquipmentModelContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departament" EntityType="Self.Departament" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
@@ -162,6 +198,14 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
+          <AssociationSet Name="FK_History_Client" Association="Self.FK_History_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Product" Association="Self.FK_History_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
           <AssociationSet Name="FK_Product_Room" Association="Self.FK_Product_Room">
             <End Role="Room" EntitySet="Room" />
             <End Role="Product" EntitySet="Product" />
@@ -170,8 +214,8 @@
             <End Role="Client" EntitySet="Client" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
-          <AssociationSet Name="FK_Request_Room" Association="Self.FK_Request_Room">
-            <End Role="Room" EntitySet="Room" />
+          <AssociationSet Name="FK_Request_Product" Association="Self.FK_Request_Product">
+            <End Role="Product" EntitySet="Product" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
           <AssociationSet Name="FK_Room_Departament" Association="Self.FK_Room_Departament">
@@ -198,6 +242,7 @@
           <NavigationProperty Name="Departament" Relationship="Self.FK_Client_Departament" FromRole="Client" ToRole="Departament" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Client_Role" FromRole="Client" ToRole="Role" />
           <NavigationProperty Name="Request" Relationship="Self.FK_Request_Client" FromRole="Client" ToRole="Request" />
+          <NavigationProperty Name="History" Relationship="AccountingEquipmentModel.FK_History_Client" FromRole="Client" ToRole="History" />
         </EntityType>
         <EntityType Name="Departament">
           <Key>
@@ -221,6 +266,8 @@
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="idRoom" Type="Int32" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Product_Room" FromRole="Product" ToRole="Room" />
+          <NavigationProperty Name="Request" Relationship="AccountingEquipmentModel.FK_Request_Product" FromRole="Product" ToRole="Request" />
+          <NavigationProperty Name="History" Relationship="AccountingEquipmentModel.FK_History_Product" FromRole="Product" ToRole="History" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -232,7 +279,8 @@
           <Property Name="idClient" Type="Int32" />
           <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Request_Client" FromRole="Request" ToRole="Client" />
-          <NavigationProperty Name="Room" Relationship="Self.FK_Request_Room" FromRole="Request" ToRole="Room" />
+          <Property Name="Count" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="AccountingEquipmentModel.FK_Request_Product" FromRole="Request" ToRole="Product" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -252,7 +300,6 @@
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Departament" Relationship="Self.FK_Room_Departament" FromRole="Room" ToRole="Departament" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Room" FromRole="Room" ToRole="Product" />
-          <NavigationProperty Name="Request" Relationship="Self.FK_Request_Room" FromRole="Room" ToRole="Request" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -324,18 +371,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Request_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="idRoom" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="idProduct" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="AccountingEquipmentEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Client" EntityType="Self.Client" />
           <EntitySet Name="Departament" EntityType="Self.Departament" />
@@ -364,11 +399,68 @@
             <End Role="Room" EntitySet="Room" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_Request_Room" Association="Self.FK_Request_Room">
-            <End Role="Room" EntitySet="Room" />
+          <AssociationSet Name="FK_Request_Product" Association="AccountingEquipmentModel.FK_Request_Product">
+            <End Role="Product" EntitySet="Product" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
+          <EntitySet Name="History" EntityType="AccountingEquipmentModel.History" />
+          <AssociationSet Name="FK_History_Client" Association="AccountingEquipmentModel.FK_History_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Product" Association="AccountingEquipmentModel.FK_History_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Request_Product">
+          <End Type="AccountingEquipmentModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="AccountingEquipmentModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="idProduct" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="idHistory" />
+          </Key>
+          <Property Name="idHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idClient" Type="Int32" />
+          <Property Name="idProduct" Type="Int32" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="AccountingEquipmentModel.FK_History_Client" FromRole="History" ToRole="Client" />
+          <NavigationProperty Name="Product" Relationship="AccountingEquipmentModel.FK_History_Product" FromRole="History" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_History_Client">
+          <End Type="AccountingEquipmentModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="AccountingEquipmentModel.History" Role="History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Product">
+          <End Type="AccountingEquipmentModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="AccountingEquipmentModel.History" Role="History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="idProduct" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -414,6 +506,7 @@
           <EntitySetMapping Name="Request">
             <EntityTypeMapping TypeName="AccountingEquipmentModel.Request">
               <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="idOperation" ColumnName="idOperation" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -448,6 +541,17 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History">
+            <EntityTypeMapping TypeName="AccountingEquipmentModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+                <ScalarProperty Name="idHistory" ColumnName="idHistory" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

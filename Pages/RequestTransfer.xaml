@@ -23,23 +23,30 @@
                 MaxWidth="200"
                 Style="{StaticResource MaterialDesignOutlinedComboBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Name"/>
-                
-                <TextBox Width="200"
-                MaxLength="35"
-                Margin="0,20,0,0"
+                material:HintAssist.Hint="Product Name"/>
+
+                <ComboBox Width="200"
                 MaxWidth="200"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                Margin="0,20,0,0"
+                Style="{StaticResource MaterialDesignOutlinedComboBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Name"/>
+                material:HintAssist.Hint="Departament Name"/>
+                
+                <ComboBox Width="200"
+                MaxWidth="200"
+                Margin="0,20,0,0"
+                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                Background="{DynamicResource PrimaryTextColor}"
+                material:HintAssist.Hint="Room Name"/>
 
                 <TextBox Width="200"
+                x:Name="txtCount"
                 MaxLength="35"
                 Margin="0,20,0,0"
                 MaxWidth="200"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Name"/>
+                material:HintAssist.Hint="Count"/>
 
                 <Button
                  Margin="0,20,0,0"
@@ -71,16 +78,21 @@
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Name"/>
-                    <ListView Grid.Column="0" Grid.Row="1" Height="370" Width="200">
-                        <material:Card
+                    <ListView x:Name="ListReqest" SelectionChanged="ListReqest_SelectionChanged" Grid.Column="0" Grid.Row="1" Height="370" Width="200">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <material:Card
                             material:ShadowAssist.ShadowDepth="Depth5" Width="180"
                             Background="#6D8879"
                             material:ShadowAssist.ShadowEdges="Bottom,Right">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="Number" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" FontSize="20"/>
-                                <TextBlock Text="Name User" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" FontSize="20"/>
-                            </StackPanel>
-                        </material:Card>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Product.Name}" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" FontSize="20"/>
+                                        <TextBlock Text="{Binding Client.Name}" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" FontSize="20"/>
+                                    </StackPanel>
+                                </material:Card>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        
                     </ListView>
                 </Grid>
             </StackPanel>

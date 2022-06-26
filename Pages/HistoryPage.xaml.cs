@@ -23,6 +23,7 @@ namespace WPFModernVerticalMenu.Pages
         public HistoryPage()
         {
             InitializeComponent();
+            DGHistory.ItemsSource = Classes.Model.BD_Connection.bd.History.ToList();
         }
     }
 }

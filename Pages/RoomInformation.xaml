@@ -13,9 +13,9 @@
     <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Vertical" Grid.Column="0">
                 <Grid>
@@ -31,48 +31,43 @@
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
                 material:HintAssist.Hint="Name"/>
-                    <ListView x:Name="ListDepartament" Grid.Row="1" Grid.Column="0" Width="250" Height="370" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="100" Height="100"/>
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Width="100">
-                                <TextBlock Text="room" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
-                                <TextBlock Text="num" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
-                            </StackPanel>
-                        </StackPanel>
+                    <ListView x:Name="ListRoom" Grid.Row="1" Grid.Column="0" Width="300" Height="370" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionChanged="ListRoom_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding Image}" RenderOptions.BitmapScalingMode="HighQuality" Width="100" Height="100"/>
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Width="100">
+                                        <TextBlock Text="{Binding Name}" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="15"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Column="2">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="370"/>
-                    </Grid.RowDefinitions>
-                    <TextBox Width="200"
-                Height="50"
-                Grid.Row="0"
-                MaxLength="35"
-                MaxWidth="200"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Name"/>
-                    <ListView x:Name="ListEmployee" Grid.Row="1" Grid.Column="0" Width="250" Height="370" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/logo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="100" Height="100"/>
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Width="100">
-                                <TextBlock Text="prod" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
-                                <TextBlock Text="numb" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
-                                <TextBlock Text="count" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+
+                <ListView x:Name="ListProduct" SelectionChanged="ListProduct_SelectionChanged"  Grid.Column="0" Width="300" Height="450" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" RenderOptions.BitmapScalingMode="HighQuality" Width="100" Height="100"/>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Width="100">
+                                    <TextBlock Text="{Binding Name}" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+                                    <TextBlock Text="{Binding Count}" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+                                    <TextBlock Text="{Binding Date}" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Medium" VerticalAlignment="Center" FontSize="20"/>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                    </ListView>
-                </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Room Num" x:Name="txtCdlientLogin" FontSize="40"  HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"/>
+                <TextBlock Text="Room Info" x:Name="txtCdlientLogin" FontSize="40"  HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}" FontWeight="Bold"/>
                 <TextBox Width="200"
+                x:Name="txtRoomName"
                 MaxLength="35"
                 MaxWidth="200"
                 Margin="0,20,0,0"
@@ -81,20 +76,22 @@
                 material:HintAssist.Hint="Name"/>
 
                 <TextBox Width="200"
+                x:Name="txtDepRoom"
                 MaxLength="35"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Name"/>
+                material:HintAssist.Hint="Departament"/>
 
                 <TextBox Width="200"
+                x:Name="txtCountProd"
                 MaxLength="35"
                 MaxWidth="200"
                 Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Background="{DynamicResource PrimaryTextColor}"
-                material:HintAssist.Hint="Name"/>
+                material:HintAssist.Hint="Count"/>
 
                 <Button
                  Margin="0,20,0,0"
